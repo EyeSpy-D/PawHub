@@ -465,11 +465,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\PawHub\\backend\\PawHubAPI\\PawHubAPI.csproj",
+      "projectUniqueName": "D:\\PawHub\\backend\\PawHubAPI\\PawHubAPI.csproj",
       "projectName": "PawHubAPI",
-      "projectPath": "C:\\Users\\user\\Desktop\\PawHub\\backend\\PawHubAPI\\PawHubAPI.csproj",
+      "projectPath": "D:\\PawHub\\backend\\PawHubAPI\\PawHubAPI.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\PawHub\\backend\\PawHubAPI\\obj\\",
+      "outputPath": "D:\\PawHub\\backend\\PawHubAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
