@@ -1,6 +1,8 @@
-﻿namespace PawHubAPI.Repository.IRepository;
+﻿using PawHubAPI.Models;
 
-public interface IUserRepository
+namespace PawHubAPI.Repository.IRepository;
+
+public interface IUserRepository: IRepository<User>
 {
-    
+    Task<User> UpdateAsync(User entity);
 }
