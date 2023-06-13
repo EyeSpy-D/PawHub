@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using System.Net;
+using AutoMapper;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using PawHubAPI.Data;
 using PawHubAPI.Models;
 using PawHubAPI.Models.Dto;
+using PawHubAPI.Repository.IRepository;
 
 namespace PawHubAPI.Controllers;
 
@@ -10,12 +13,34 @@ namespace PawHubAPI.Controllers;
 [ApiController]
 public class UserAPIController : ControllerBase
 {
-    private readonly ApplicationDbContext _db;
+    protected APIResponse _response;
+    private readonly IUserRepository _dbUser;
+    private readonly IMapper _mapper;
 
-    public UserAPIController(ApplicationDbContext db)
+    public UserAPIController(IUserRepository dbUser, IMapper mapper)
     {
-        _db = db;
+        _dbUser = dbUser;
+        _mapper = mapper;
+        this._response = new();
     }
-    
-    
+
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<APIResponse>> GetUsers()
+    {
+        try
+        {
+            IEnumerable<User> userList = await _dbUser.GetAllAsync();
+            _response.Result = _mapper.Map<List<UserDTO>>(userList);
+            _response.StatusCode = HttpStatusCode.OK;
+            return Ok(_response);
+        }
+        catch (Exception ex)
+        {
+            _response.IsSuccess = false;
+            _response.ErrorMessages = new List<string>() { ex.ToString() };
+        }
+
+        return _response;
+    }
 }
