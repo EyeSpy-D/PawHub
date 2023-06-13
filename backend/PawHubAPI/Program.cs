@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PawHubAPI;
 using PawHubAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
 });
+
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 // Add services to the container.
 
 builder.Services.AddControllers();
